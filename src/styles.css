@@ -10,6 +10,7 @@ body {
   line-height: 1.6;
   color: #333;
   background-color: #f8f9fa;
+  overflow-x: hidden; /* prevent horizontal scrolling on mobile */
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -116,4 +117,9 @@ a:hover {
   .app-main {
     padding: 1rem;
   }
+}
+
+/* Improve tap target size on touch devices */
+@media (hover: none) and (pointer: coarse) {
+  .nav-link { padding: 0.75rem 1rem; }
 }

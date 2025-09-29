@@ -10,6 +10,8 @@
   padding: 1rem 2rem;
   box-shadow: 0 2px 10px rgba(0,0,0,0.06);
   border-bottom: 1px solid rgba(0,0,0,0.06);
+  width: 100%;
+  flex-wrap: wrap;
 }
 
 .app-header h1 {
@@ -25,6 +27,7 @@
   align-items: center;
   gap: 2rem;
   margin-top: 0;
+  flex-wrap: wrap;
 }
 
 .nav-link {
@@ -69,4 +72,125 @@
 
 .app-footer p {
   margin: 0;
+}
+
+/* Prevent tiny icons/text from overflowing and improve tap targets */
+.nav-link {
+  font-size: 1rem;
+}
+
+/* Header icons responsive sizing */
+.app-header img {
+  max-width: 100%;
+  height: 48px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+  .app-nav {
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .app-header {
+    padding: 0.75rem 1rem;
+    row-gap: 0.5rem;
+  }
+
+  /* Stack header content vertically and stretch nav */
+  .app-header { 
+    /* display is set inline; we only adjust flow */
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .app-header img {
+    height: 36px;
+  }
+
+  /* Mobile menu collapsed by default */
+  .menu-toggle {
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 4px;
+    width: 40px;
+    height: 40px;
+    border: 1px solid rgba(0,0,0,0.15);
+    border-radius: 6px;
+    background: #ffffff;
+    margin-inline-start: auto;
+    position: relative;
+    z-index: 1101;
+  }
+
+  .menu-bar {
+    display: block;
+    height: 2px;
+    width: 20px;
+    background: #152018;
+    margin: 0 auto;
+    transition: transform 0.25s ease, opacity 0.2s ease;
+  }
+
+  /* Animate hamburger to X */
+  .menu-toggle.active .menu-bar:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+  .menu-toggle.active .menu-bar:nth-child(2) { opacity: 0; }
+  .menu-toggle.active .menu-bar:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
+  /* When open, make the button a clean close icon at the corner */
+  .menu-toggle.active {
+    position: fixed;
+    top: 12px;
+    inset-inline-end: 16px;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+  }
+  .menu-toggle.active .menu-bar { width: 24px; height: 2px; background: #111; }
+
+  /* Off-canvas panel */
+  .app-nav {
+    position: fixed;
+    top: 0;
+    inset-inline-end: 0;
+    height: 100vh;
+    width: min(80vw, 320px);
+    background: #ffffff;
+    box-shadow: -2px 0 20px rgba(0,0,0,0.15);
+    padding: 5rem 1rem 1rem 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem !important;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+    z-index: 1100;
+  }
+
+  .app-nav.open {
+    transform: translateX(0);
+  }
+
+  .nav-link {
+    padding: 0.5rem 0.75rem;
+    border: 1px solid rgba(0,0,0,0.08);
+    border-radius: 8px;
+    justify-content: center;
+  }
+
+  /* Backdrop */
+  .menu-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.4);
+    z-index: 1099;
+    animation: fadeIn 0.2s ease;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
 }
