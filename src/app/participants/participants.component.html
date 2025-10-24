@@ -1,0 +1,115 @@
+<div class="participants-container">
+  <div class="document-header">
+
+    <div class="header-actions">
+      <a class="download-btn" href="assets/documents/كشف بأسماء المشاركين 22 10 2025.pdf" download>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z" />
+        </svg>
+        <span>تحميل القائمة (PDF)</span>
+      </a>
+      
+      <button class="back-btn" (click)="goBack()">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z" />
+        </svg>
+        <span>العودة إلى الوثائق</span>
+      </button>
+    </div>
+    <h1>{{ title }}</h1>
+    <p>القائمة الكاملة للمسجلين المشاركين في الحدث</p>
+  </div>
+
+  <div class="participant-stats">
+    <div class="stat-card">
+      <span class="stat-number">{{ totalParticipants }}</span>
+      <span class="stat-label">إجمالي المشاركين</span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-number">{{ totalCountries }}</span>
+      <span class="stat-label">الدول المشاركة</span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-number">{{ totalLeaders }}</span>
+      <span class="stat-label">القيادات والمسؤولين</span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-number">{{ totalYouth }}</span>
+      <span class="stat-label">الشباب المشاركين</span>
+    </div>
+  </div>
+
+  <div class="table-container">
+
+    <h2>بيان بأسماء المشاركين</h2>
+    <div class="table-wrapper">
+      <table class="participants-table">
+        <thead>
+          <tr>
+            <th></th>
+            <th>الجمعية (الدولة)</th>
+            <th>المشاركون من بيوت الشباب</th>
+            <th>القيادات والمسؤولون</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let group of participantGroups; let i = index">
+            <td>{{ i + 1 }}</td>
+            <td>
+              <span class="country-cell">
+                {{ group.country }}
+              </span>
+            </td>
+            <td>
+              <ul *ngIf="group.youthParticipants.length > 0; else noData">
+                <li *ngFor="let youth of group.youthParticipants">{{ youth }}</li>
+              </ul>
+            </td>
+            <td>
+              <ul *ngIf="group.leaders.length > 0; else noData">
+                <li *ngFor="let leader of group.leaders">{{ leader }}</li>
+              </ul>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2>الضيوف والمحاضرون وقيادات بيوت الشباب</h2>
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>قيادات بيوت الشباب</th>
+            <th>المحاضرون وكادر التأطير</th>
+            <th>الضيوف</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let i of table2Rows">
+            <td>
+              <ul *ngIf="allLeaders[i]" class="single-item-list">
+                <li>{{ allLeaders[i] }}</li>
+              </ul>
+            </td>
+            <td>
+              <ul *ngIf="lecturers.list[i]" class="single-item-list">
+                <li>{{ lecturers.list[i] }}</li>
+              </ul>
+            </td>
+            <td>
+              <ul *ngIf="guests.list[i]" class="single-item-list">
+                <li>{{ guests.list[i] }}</li>
+              </ul>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</div>
+
+<ng-template #noData>
+  <span class="no-data-cell">--</span>
+</ng-template>

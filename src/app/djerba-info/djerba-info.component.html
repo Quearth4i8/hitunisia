@@ -1,0 +1,103 @@
+<div class="djerba-container">
+    <div class="document-header">
+        <div class="header-actions">
+            <button class="back-btn" (click)="goBack()">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z" />
+                </svg>
+                <span>العودة إلى الوثائق</span>
+            </button>
+        </div>
+        <h1>{{ title }}</h1>
+        <p>صور ووثائق عن جزيرة جربة ومكان الحدث</p>
+    </div>
+
+    <div class="djerba-content">
+
+        <div class="content-section">
+            <h2>جزيرة جربة</h2>
+            <p class="section-intro">
+                تعرف جزيرة جربة بأنها "جزيرة الأحلام"، وهي وجهة ساحرة تقع قبالة الساحل الجنوبي لتونس. تشتهر بشواطئها
+                الرملية البيضاء ومياهها الفيروزية الصافية، وتاريخها الغني الذي يمتزج فيه التأثيرات البربرية والعربية
+                والأندلسية. استكشف أسواقها التقليدية المفعمة بالحياة، وزر معالمها التاريخية مثل كنيس الغريبة، واستمتع
+                بكرم ضيافة أهلها.
+            </p>
+            <p>استكشف جمال جزيرة جربة، مكان انعقاد المنتدى.</p>
+
+            <div class="static-image-container">
+                <img [src]="djerbaStaticImage" alt="Djerba Image" (click)="openModal(djerbaStaticImage)">
+            </div>
+
+            <div class="download-card">
+                <div class="download-info">
+                    <h4>دليل جربة (PDF)</h4>
+                    <p>ملف تعريفي بجزيرة جربة ومعالمها السياحية.</p>
+                </div>
+                <a href="assets/documents/djerba-guide.pdf" download class="content-download-btn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z" />
+                    </svg>
+                    تحميل
+                </a>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2>مركز إليف (Elif Center)</h2>
+            <p class="section-intro">
+                يقع مركز إليف في قلب جزيرة جربة، وهو مركز حديث ومتكامل يوفر بيئة مثالية للفعاليات والمؤتمرات. يتميز
+                المركز بتجهيزاته العصرية وقاعاته الفسيحة المصممة لاستيعاب مختلف الأنشطة، مما يجعله المكان الأمثل
+                لاستضافة منتدى بيوت الشباب العربية للتنمية المستدامة. يوفر المركز كافة المرافق اللازمة لضمان تجربة ناجحة
+                ومريحة للمشاركين.
+            </p>
+            <p>صور ومعلومات عن مكان الحدث الرئيسي.</p>
+
+            <div class="carousel-container" (mouseenter)="stopAutoScroll()" (mouseleave)="startAutoScroll()">
+                <div class="carousel-track" [style.transform]="elifTransform" [style.transition]="elifTransition"
+                    (transitionend)="onElifTransitionEnd()">
+                    <div *ngFor="let image of elifImages" class="carousel-slide">
+                        <img [src]="image" alt="Elif Center Image" (click)="openModal(image)">
+                    </div>
+                    <div *ngFor="let image of clonedElifImages" class="carousel-slide" aria-hidden="true">
+                        <img [src]="image" alt="Elif Center Image" (click)="openModal(image)">
+                    </div>
+                </div>
+
+                <button class="carousel-btn prev" (click)="nextElif()">&lt;</button>
+                <button class="carousel-btn next" (click)="prevElif()" [disabled]="currentElifIndex === 0">&gt;</button>
+            </div>
+            <div class="download-card">
+                <div class="download-info">
+                    <h4>خطة الإخلاء والطوارئ</h4>
+                    <p>خطة السلامة والهروب من الحريق لمركز إليف.</p>
+                </div>
+                <a href="assets/documents/fire-escape.jpg" download class="content-download-btn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z" />
+                    </svg>
+                    تحميل
+                </a>
+            </div><div class="download-card" style="margin-top: 2rem;">
+            <div class="download-info">
+              <h4>كتيب مركز إليف (PDF)</h4>
+              <p>معلومات تفصيلية حول مرافق وخدمات مركز إليف.</p>
+            </div>
+            <a href="assets/elif-center/Brochure Elife.pdf" download class="content-download-btn">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z" />
+              </svg>
+              تحميل
+            </a>
+          </div>
+        </div>
+
+    </div>
+
+    <div class="modal-overlay" *ngIf="isModalOpen" (click)="closeModal()" [class.modal-open]="isModalOpen">
+        <div class="modal-content" (click)="$event.stopPropagation()">
+            <button class="modal-close-btn" (click)="closeModal()">&times;</button>
+            <img *ngIf="modalImageUrl" [src]="modalImageUrl" alt="Zoomed Image" class="modal-image">
+        </div>
+    </div>
+
+</div>
