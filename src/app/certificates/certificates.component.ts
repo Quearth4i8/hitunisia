@@ -45,4 +45,20 @@ export class CertificatesComponent implements OnInit {
     // Navigate back to the main documents page
     this.router.navigate(['/documents']);
   }
+
+  downloadCertificate(): void {
+    if (!this.certificate || !this.certificate.certificateImagePath) {
+      return;
+    }
+
+    // Create a temporary link element
+    const link = document.createElement('a');
+    link.href = this.certificate.certificateImagePath;
+    link.download = `شهادة_${this.certificate.participantName || 'مشارك'}.png`;
+
+    // Append to body, click, and remove
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  }
 }

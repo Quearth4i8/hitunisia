@@ -163,6 +163,7 @@
   border-radius: 50%;
   border: 4px solid var(--primary-color);
   z-index: 2;
+  margin-top: 1px;
 }
 
 .timeline-time {
@@ -172,9 +173,8 @@
   font-size: 1.1rem;
   font-weight: 700;
   color: var(--primary-color);
+  padding-right:10px;
   text-align: left; /* Keep time text LTR-aligned (e.g., 08:00) */
-  padding-top: 2px; /* Small tweak to align with text in box */
-  /* END: THE FIX */
 }
 
 .timeline-content {
@@ -296,7 +296,14 @@
   }
 
   .timeline-marker {
-    right: -9px;
+    /* * FIX 1: Corrected marker position.
+     * The padding-right on .timeline is 1.5rem (24px).
+     * The line is 3px wide.
+     * The marker's full width is 16px + 4px border + 4px border = 24px.
+     * Calculation: -(padding) - (line-width/2) + (marker-width/2)
+     * right: -24px - 1.5px + 12px = -13.5px
+     */
+    right: -13.5px; 
     width: 16px;
     height: 16px;
   }
@@ -309,5 +316,9 @@
   .timeline-time {
     flex-basis: auto;
     padding-top: 0;
+    /* * FIX 2: Align time to the right.
+     * Inherited 'text-align: left' looks wrong in a stacked RTL view.
+     */
+    text-align: right; 
   }
 }
