@@ -9,28 +9,48 @@
       </button>
     </div>
     <h1>{{ title }}</h1>
-    <p>{{ certificate ? 'شهادة المشاركة للمشارك المحدد' : 'الوصول إلى شهادات المشاركة' }}</p>
+    <p>{{ certificate ? 'شهادة وبيانات المشارك المحدد' : 'الوصول إلى شهادات المشاركة' }}</p>
   </div>
 
   <div class="certificate-content">
-    <div *ngIf="certificate?.certificateImagePath; else noCertificateSelected">
-      <div class="certificate-image-wrapper">
-        <img [src]="certificate?.certificateImagePath"
-             [alt]="'شهادة مشاركة لـ ' + (certificate?.participantName || 'المشارك')">
-             </div>
+    
+    <div class="certificate-display-area" *ngIf="certificate; else noCertificateSelected">
+      
+      <div class="certificate-image-wrapper" *ngIf="certificate.certificateImagePath">
+        <img [src]="certificate.certificateImagePath"
+             [alt]="'شهادة مشاركة لـ ' + (certificate.participantName || 'المشارك')">
+        <button class="download-btn" (click)="downloadCertificate()" title="تحميل الشهادة">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
+          </svg>
+          <span>تحميل الشهادة</span>
+        </button>
+      </div>
+      
+      <div class="participant-details">
+        <h2>بيانات المشارك</h2>
+        <ul>
+          <li><strong>الاسم الكامل:</strong> {{ certificate.participantName }}</li>
+          <li><strong>البريد الإلكتروني:</strong> {{ certificate.emailAddress }}</li>
+          <li><strong>تاريخ الميلاد:</strong> {{ certificate.dateOfBirth }}</li>
+          <li><strong>مكان الميلاد:</strong> {{ certificate.placeOfBirth }}</li>
+          <li><strong>رقم الهاتف:</strong> {{ certificate.phoneNumber }}</li>
+          <li><strong>الحالة الحالية:</strong> {{ certificate.currentStatus }}</li>
+          <li><strong>المؤسسة / المنظمة:</strong> {{ certificate.institution }}</li>
+          <li><strong>مجال التخصص / الدراسة:</strong> {{ certificate.fieldOfStudy }}</li>
+        </ul>
+      </div>
+
     </div>
 
     <ng-template #noCertificateSelected>
       <div class="placeholder-message">
-        <p *ngIf="participantId && !certificate; else noIdProvided">
-           لم يتم العثور على بيانات الشهادة بالمعرف "{{ participantId }}". يرجى التحقق من الرابط أو رمز الاستجابة السريعة.
-        </p>
-         <p *ngIf="participantId && certificate && !certificate.certificateImagePath; else noIdProvided">
-           تم العثور على بيانات المشارك "{{ participantId }}"، ولكن ملف صورة الشهادة مفقود في البيانات.
+        <p *ngIf="participantId; else noIdProvided">
+          لم يتم العثور على بيانات الشهادة بالمعرف "{{ participantId }}". يرجى التحقق من الرابط أو رمز الاستجابة السريعة.
         </p>
         <ng-template #noIdProvided>
-           <p>يرجى مسح رمز الاستجابة السريعة (QR Code) الخاص بالمشارك لعرض شهادته.</p>
-           <p>Please scan a participant's QR code to view their certificate.</p>
+          <p>يرجى مسح رمز الاستجابة السريعة (QR Code) الخاص بالمشارك لعرض شهادته.</p>
+          <p>Please scan a participant's QR code to view their certificate.</p>
         </ng-template>
       </div>
     </ng-template>
