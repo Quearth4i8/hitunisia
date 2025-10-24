@@ -1,0 +1,219 @@
+<div class="planning-container">
+  <div class="document-header">
+
+    <div class="header-actions">
+      <a class="download-btn" href="assets/documents/منتدى بيوت الشباب العربية للتنمية المستدامة.pdf" download>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z" />
+        </svg>
+        <span>تحميل البرنامج (PDF)</span>
+      </a>
+      <button class="back-btn" (click)="goBack()">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z" />
+        </svg>
+        <span>العودة إلى الوثائق</span>
+      </button>
+      
+    </div>
+    <h1>{{ title }}</h1>
+    <p>الجدول الزمني التفصيلي لفعاليات المنتدى</p>
+  </div>
+
+  <div class="planning-content">
+
+    <div class="day-schedule">
+      <h2 class="day-header">الجمعة 31 أكتوبر 2025</h2>
+      <ul class="timeline">
+        <li class="timeline-item event-meal">
+          <span class="timeline-time">08:00</span>
+          <div class="timeline-marker"></div>
+          <div class="timeline-content">
+            <h4>إفطار الصباح</h4>
+          </div>
+        </li>
+        <li class="timeline-item event-ceremony">
+          <span class="timeline-time">10:00</span>
+          <div class="timeline-marker"></div>
+          <div class="timeline-content">
+            <h4>إفتتاح المنتدى والكلمات الرسمية</h4>
+          </div>
+        </li>
+        <li class="timeline-item event-ceremony">
+          <span class="timeline-time">10:15</span>
+          <div class="timeline-marker"></div>
+          <div class="timeline-content">
+            <h4>كلمات الضيوف</h4>
+          </div>
+        </li>
+        <li class="timeline-item event-ceremony">
+          <span class="timeline-time">10:30</span>
+          <div class="timeline-marker"></div>
+          <div class="timeline-content">
+            <h4>كلمة وزير الشباب والرياضة التونسية</h4>
+          </div>
+        </li>
+        <li class="timeline-item event-lecture">
+          <span class="timeline-time">11:00</span>
+          <div class="timeline-marker"></div>
+          <div class="timeline-content">
+            <h4>المحاضرة الأولى</h4>
+            <p>السياحة الشبابية والتنمية المستدامة في زمن الذكاء الإصطناعي</p>
+            <div class="speaker-info">
+              <span><strong>المتحدث:</strong> الدكتورة نجلاء حرب</span>
+              <span><em>مديرة مركز العلاقات الإقتصادية والدولية بمعهد التخطيط القومي المصرى</em></span>
+            </div>
+          </div>
+        </li>
+        <li class="timeline-item event-meal">
+          <span class="timeline-time">13:00</span>
+          <div class="timeline-marker"></div>
+          <div class="timeline-content">
+            <h4>الغداء</h4>
+          </div>
+        </li>
+        <li class="timeline-item event-activity">
+          <span class="timeline-time">15:00</span>
+          <div class="timeline-marker"></div>
+          <div class="timeline-content">
+            <h4>الجلسة التمهيدية لورشة HACKATHON</h4>
+            <p>المتابعة والمرافقة للإخراج العلمي، قواعد وضوابط المسابقة وتوزيع مجموعات العمل.</p>
+            <div class="speaker-info">
+              <span><strong>تأطير:</strong> الاستاذة الجامعية نبيلة العريبي</span>
+              <span><strong>تأطير:</strong> الاستاذة الجامعية إناس عاشور</span>
+            </div>
+          </div>
+        </li>
+        <li class="timeline-item event-activity">
+          <span class="timeline-time">18:00</span>
+          <div class="timeline-marker"></div>
+          <div class="timeline-content">
+            <h4>إنطلاق سهرة HACKATHON</h4>
+            <p>سهرة على مدار 20 ساعة للتطبيقات المعلوماتية في مجال التنمية المستدامة بمركز أليف جربة (العشاء على عين
+              المكان).</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="day-schedule">
+      <h2 class="day-header">السبت 01 نوفمبر 2025</h2>
+      <ul class="timeline">
+        <li class="timeline-item event-meal">
+          <span class="timeline-time">08:00</span>
+          <div class="timeline-marker"></div>
+          <div class="timeline-content">
+            <h4>إفطار الصباح</h4>
+          </div>
+        </li>
+        <li class="timeline-item event-activity">
+          <span class="timeline-time">صباحاً</span>
+          <div class="timeline-marker"></div>
+          <div class="timeline-content">
+            <h4>مواصلة مسابقة الـ HACKATHON</h4>
+            <p>مواصلة العمل على التطبيقات المعلوماتية في مجال التنمية المستدامة.</p>
+          </div>
+        </li>
+        <li class="timeline-item event-meal">
+          <span class="timeline-time">13:00</span>
+          <div class="timeline-marker"></div>
+          <div class="timeline-content">
+            <h4>الغداء</h4>
+          </div>
+        </li>
+        <li class="timeline-item event-tour">
+          <span class="timeline-time">15:00</span>
+          <div class="timeline-marker"></div>
+          <div class="timeline-content">
+            <h4>مساحة للترفيه والسياحة</h4>
+            <p>زيارة لأهم المواقع الحضارية والتاريخية والسياحية لجزيرة جربة.</p>
+          </div>
+        </li>
+        <li class="timeline-item event-meal">
+          <span class="timeline-time">20:00</span>
+          <div class="timeline-marker"></div>
+          <div class="timeline-content">
+            <h4>العشاء</h4>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="day-schedule">
+      <h2 class="day-header">الأحد 02 نوفمبر 2025</h2>
+      <ul class="timeline">
+        <li class="timeline-item event-meal">
+          <span class="timeline-time">08:00</span>
+          <div class="timeline-marker"></div>
+          <div class="timeline-content">
+            <h4>إفطار الصباح</h4>
+          </div>
+        </li>
+        <li class="timeline-item event-lecture">
+          <span class="timeline-time">10:00</span>
+          <div class="timeline-marker"></div>
+          <div class="timeline-content">
+            <h4>المحاضرة الثانية</h4>
+            <p>الأمن السيبراني والاستدامة: "بناء مستقبل آمن وواعد"</p>
+            <div class="speaker-info">
+              <span><strong>المتحدث:</strong> الدكتورة ريمة عباسي</span>
+              <span><em>مديرة المعهد العالي للدراسات التكنولوجية في المواصلات بتونس</em></span>
+            </div>
+          </div>
+        </li>
+        <li class="timeline-item event-lecture">
+          <span class="timeline-time">10:30</span>
+          <div class="timeline-marker"></div>
+          <div class="timeline-content">
+            <h4>المحاضرة الثالثة</h4>
+            <p>ديناميكية التفاعل بين الاتحادات العربية للشباب من أجل التنمية المستدامة "رؤية الاتحاد العربي للشباب
+              والبيئة"</p>
+            <div class="speaker-info">
+              <span><strong>المتحدث:</strong> الدكتور ممدوح رشوان</span>
+              <span><em>أمين عام الاتحاد العربي للشباب والبيئة</em></span>
+            </div>
+          </div>
+        </li>
+        <li class="timeline-item event-lecture">
+          <span class="timeline-time">11:30</span>
+          <div class="timeline-marker"></div>
+          <div class="timeline-content">
+            <h4>المحاضرة الرابعة</h4>
+            <p>الاستراتيجية الأممية في مجال التنمية المستدامة "الرؤية والأهداف"</p>
+            <div class="speaker-info">
+              <span><strong>المتحدث:</strong> الدكتورة سامية شلبي</span>
+              <span><em>أستاذة جامعية</em></span>
+            </div>
+          </div>
+        </li>
+        <li class="timeline-item event-lecture">
+          <span class="timeline-time">12:00</span>
+          <div class="timeline-marker"></div>
+          <div class="timeline-content">
+            <h4>المحاضرة الخامسة</h4>
+            <p>استراتيجية بيوت الشباب الدولية في مجال التنمية المستدامة "الرؤية والأهداف"</p>
+            <div class="speaker-info">
+              <span><strong>المتحدث:</strong> الدكتور عبد السلام المختار العربي</span>
+              <span><em>عضو مجلس أمناء الاتحاد الدولي لبيوت الشباب</em></span>
+            </div>
+          </div>
+        </li>
+        <li class="timeline-item event-meal">
+          <span class="timeline-time">13:00</span>
+          <div class="timeline-marker"></div>
+          <div class="timeline-content">
+            <h4>الغداء</h4>
+          </div>
+        </li>
+        <li class="timeline-item event-ceremony">
+          <span class="timeline-time">14:00</span>
+          <div class="timeline-marker"></div>
+          <div class="timeline-content">
+            <h4>حفل الاختتام وتوزيع الشهادات</h4>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+</div>

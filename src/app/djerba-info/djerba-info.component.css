@@ -1,0 +1,364 @@
+/* --- CSS Variables for easy theming --- */
+:host {
+  --primary-color: #6a11cb;
+  --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --text-primary: #212529;
+  --text-secondary: #6c757d;
+  --background-primary: #f8f9fa;
+  --background-secondary: #ffffff;
+  --border-color: #dee2e6;
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
+  --border-radius: 12px;
+}
+
+.djerba-container {
+  padding: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  direction: rtl;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  background-color: var(--background-primary);
+  border-radius: var(--border-radius);
+}
+
+/* --- Header --- */
+.document-header {
+  margin-bottom: 2.5rem;
+  text-align: center;
+}
+
+.header-actions {
+  display: flex;
+  justify-content: flex-start; /* Button on the right (visual) */
+  margin-bottom: 1.5rem;
+}
+
+.back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: var(--background-secondary);
+  color: var(--primary-color);
+  border: 1px solid var(--border-color);
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  box-shadow: var(--shadow-sm);
+  box-sizing: border-box;
+}
+
+.back-btn:hover {
+  background-color: #fdfdfd;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.back-btn svg {
+  transform: scaleX(-1);
+}
+
+.document-header h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  background: var(--primary-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.document-header p {
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+}
+
+/* --- Content Section --- */
+.content-section {
+  margin-bottom: 3rem;
+}
+
+.content-section h2 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-top: 3rem;
+  margin-bottom: 0.5rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 2px solid;
+  border-image: var(--primary-gradient) 1;
+}
+
+.section-intro {
+  color: var(--text-primary);
+  font-size: 1.05rem;
+  line-height: 1.7;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+  /* max-width: 900px; <-- Removed for alignment */
+}
+
+.content-section > p:not(.section-intro) {
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+}
+
+/* --- Static Image Styles --- */
+.static-image-container {
+  width: 100%;
+  /* max-width: 1000px; <-- Removed for alignment */
+  margin: 0 auto 1.5rem auto;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-radius: var(--border-radius);
+}
+
+.static-image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  cursor: zoom-in;
+  transition: opacity 0.2s ease;
+}
+
+.static-image-container img:hover {
+  opacity: 0.9;
+}
+
+/* --- START: Multi-view Carousel Styles --- */
+.carousel-container {
+  position: relative;
+  width: 100%;
+  /* max-width: 1000px; <-- Removed for alignment */
+  margin: 0 auto 1.5rem auto;
+  overflow: hidden;
+}
+
+.carousel-track {
+  display: flex;
+  direction: ltr;
+}
+
+.carousel-slide {
+  flex: 0 0 calc(100% / 3); /* <-- Show 3 images */
+  width: calc(100% / 3);
+  aspect-ratio: 4 / 3;
+  padding: 0 4px;
+  box-sizing: border-box;
+}
+
+.carousel-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 8px;
+  cursor: zoom-in;
+  transition: opacity 0.2s ease;
+}
+
+.carousel-slide img:hover {
+  opacity: 0.9;
+}
+
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.4);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 10;
+  opacity: 0;
+}
+
+.carousel-container:hover .carousel-btn {
+  opacity: 1;
+}
+
+.carousel-btn:hover:not(:disabled) {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.carousel-btn:disabled {
+  opacity: 0.2;
+  cursor: not-allowed;
+}
+
+.carousel-btn.prev {
+  right: 10px;
+}
+
+.carousel-btn.next {
+  left: 10px;
+}
+/* --- END: Multi-view Carousel Styles --- */
+
+/* --- Download Card --- */
+.download-card {
+  background: var(--background-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-sm);
+  padding: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.download-info h4 {
+  margin: 0 0 0.25rem 0;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.download-info p {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.content-download-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: var(--primary-color);
+  color: #ffffff;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+  border: 1px solid var(--primary-color);
+}
+
+.content-download-btn:hover {
+  background-color: #5a0ebc;
+}
+
+/* --- MODAL STYLES --- */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  direction: ltr;
+}
+
+.modal-overlay.modal-open {
+  opacity: 1;
+}
+
+.modal-content {
+  position: relative;
+  border-radius: var(--border-radius);
+  max-width: 90vw;
+  max-height: 90vh;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  transform: scale(0.7);
+  opacity: 0;
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+.modal-overlay.modal-open .modal-content {
+  transform: scale(1);
+  opacity: 1;
+}
+
+.modal-image {
+  display: block;
+  max-width: 100%;
+  max-height: 90vh;
+  object-fit: contain;
+  border-radius: var(--border-radius);
+}
+
+.modal-close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  font-size: 1.5rem;
+  line-height: 28px;
+  text-align: center;
+  cursor: pointer;
+  z-index: 1010;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  transition: background-color 0.2s ease;
+}
+
+.modal-close-btn:hover {
+  background-color: #5a0ebc;
+}
+/* --- END: MODAL STYLES --- */
+
+
+/* --- Responsive --- */
+/* Carousel specific responsive styles */
+@media (max-width: 900px) {
+  /* Show 2 images */
+  .carousel-slide {
+    flex: 0 0 50%;
+    width: 50%;
+  }
+}
+
+/* General container/card responsive styles */
+@media (max-width: 768px) {
+  .djerba-container {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 520px) {
+  /* Show 1 image */
+  .carousel-slide {
+    flex: 0 0 100%;
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .djerba-container {
+    padding: 1rem;
+  }
+  .header-actions {
+    justify-content: center;
+  }
+  .download-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .content-download-btn {
+    width: 100%;
+    justify-content: center;
+  }
+  .modal-close-btn {
+    top: 5px;
+    right: 5px;
+  }
+}
