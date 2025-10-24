@@ -1,0 +1,39 @@
+<div class="certificate-container">
+  <div class="document-header">
+    <div class="header-actions">
+      <button class="back-btn" (click)="goBack()">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z" />
+        </svg>
+        <span>العودة إلى الوثائق</span>
+      </button>
+    </div>
+    <h1>{{ title }}</h1>
+    <p>{{ certificate ? 'شهادة المشاركة للمشارك المحدد' : 'الوصول إلى شهادات المشاركة' }}</p>
+  </div>
+
+  <div class="certificate-content">
+    <div *ngIf="certificate?.certificateImagePath; else noCertificateSelected">
+      <div class="certificate-image-wrapper">
+        <img [src]="certificate?.certificateImagePath"
+             [alt]="'شهادة مشاركة لـ ' + (certificate?.participantName || 'المشارك')">
+             </div>
+    </div>
+
+    <ng-template #noCertificateSelected>
+      <div class="placeholder-message">
+        <p *ngIf="participantId && !certificate; else noIdProvided">
+           لم يتم العثور على بيانات الشهادة بالمعرف "{{ participantId }}". يرجى التحقق من الرابط أو رمز الاستجابة السريعة.
+        </p>
+         <p *ngIf="participantId && certificate && !certificate.certificateImagePath; else noIdProvided">
+           تم العثور على بيانات المشارك "{{ participantId }}"، ولكن ملف صورة الشهادة مفقود في البيانات.
+        </p>
+        <ng-template #noIdProvided>
+           <p>يرجى مسح رمز الاستجابة السريعة (QR Code) الخاص بالمشارك لعرض شهادته.</p>
+           <p>Please scan a participant's QR code to view their certificate.</p>
+        </ng-template>
+      </div>
+    </ng-template>
+  </div>
+
+</div>
